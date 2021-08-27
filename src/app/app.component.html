@@ -1,4 +1,13 @@
-<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+<style>
+a:hover {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+</style>
+
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs navbar-dark bg-dark">
+  <li class="navbar-brand"> School Reports</li>
   <li [ngbNavItem]="1">
     <a ngbNavLink>Pie Chart</a>
     <ng-template ngbNavContent>
