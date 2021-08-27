@@ -1,5 +1,6 @@
-<p>Pie Chart</p>
-<div id="chart">
+
+<h5>Distribution of Expenses in School for academic year 2020-21</h5> 
+<div style="width:800px; margin:0 auto;" id="chart">
     <apx-chart
       [series]="chartOptions.series"
       [chart]="chartOptions.chart"
@@ -7,3 +8,8 @@
       [responsive]="chartOptions.responsive"
     ></apx-chart>
   </div>
+  <p>
+    <ngb-alert [dismissible]="false">
+      <strong>Note!</strong> Data in thousand INR
+    </ngb-alert>
+  </p>

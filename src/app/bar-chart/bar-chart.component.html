@@ -1,12 +1,6 @@
-<style>
-    .barChart{
-    display: block;
-    height: 600px;
-    width: 600px;
-}
-</style>
 
-<p>this is bar-chart</p>
+
+
 <div echarts [options]="options" class="demo-chart"
   (chartInit)="onChartEvent($event, 'chartInit')"
   (chartClick)="onChartEvent($event, 'chartClick')"

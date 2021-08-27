@@ -37,8 +37,9 @@ export class PieChartComponent implements OnInit{
     this.chartOptions = {
       series: this.expense,
       chart: {
-        width: 380,
-        type: "pie"
+        width: 600,
+        type: "pie",
+        position: "center"
       },
       labels: this.aspect,
       responsive: [
