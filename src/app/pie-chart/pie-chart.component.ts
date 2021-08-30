@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ChartComponent } from 'ng-apexcharts';
+import { ResultService } from '../result-service';
 
 
 //import { NzMessageService } from 'ng-zorro-antd/message';
@@ -33,7 +34,7 @@ export class PieChartComponent implements OnInit{
   ngOnInit(): void {
     this.getExpense();
   }
-  constructor(private httpclient: HttpClient,private changedetect: ChangeDetectorRef) {
+  constructor(private resultService: ResultService,private changedetect: ChangeDetectorRef) {
     this.chartOptions = {
       series: this.expense,
       chart: {
@@ -59,8 +60,7 @@ export class PieChartComponent implements OnInit{
   }
 
   getExpense(){
-    this.httpclient.get<Expense[]>('http://localhost:9876/budget').subscribe(
-      (data: any) => {
+    this.resultService.getResult("budget").subscribe((data: any)=> {
         for(let item of data){
           console.log(data);
           this.expense.push(item.expense);

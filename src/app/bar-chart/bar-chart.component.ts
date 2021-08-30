@@ -1,9 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { EChartsOption } from 'echarts';
-import { HttpClient } from '@angular/common/http';
+import { ResultService } from '../result-service';
 import LinearGradient from 'zrender/lib/graphic/LinearGradient';
-
-
 
 
 @Component({
@@ -15,7 +12,7 @@ export class BarChartComponent implements OnInit{
   options: any;
   names: string[]=[];
   marks: number[]=[];
-  constructor(private httpclient: HttpClient,private changedetect: ChangeDetectorRef) {}
+  constructor(private resultservice: ResultService,private changedetect: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.getResult();
@@ -109,26 +106,13 @@ export class BarChartComponent implements OnInit{
 
 
   getResult(){
-    this.httpclient.get<Result[]>('http://localhost:9876/result').subscribe(
-      (data: any) => {
-        for(let item of data){
+    this.resultservice.getResult("result").subscribe((data: any)=> {
+      for(let item of data){
           this.names.push(item.name);
           this.marks.push(item.percentage);
         }
-      
-      }
-    );
+        console.log(data);
+    })
   }
-  
 
 }
-
-export class Result {
-  constructor(
-    public name: string,
-    public rollNo: number,
-    public standard: number,
-    public percentage: number
-  ){}
-}
-
