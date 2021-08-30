@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class ResultService{
 
     constructor(private httpClient: HttpClient){}
-    private endpoint = "http://localhost:9876/";
+    public endpoint = "http://localhost:9876/";
 
 
     getResult(uri: string): Observable<Result[]>{
